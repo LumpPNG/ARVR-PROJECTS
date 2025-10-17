@@ -6,6 +6,16 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
