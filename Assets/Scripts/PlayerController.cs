@@ -1,0 +1,37 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    private Rigidbody rb;
+
+    public float speed;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        rb = GetComponent <Rigidbody> ();
+    
+        
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        float moveX = 0f; // Left right
+        float moveZ = 0f; //Forward Backward
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+            moveX = 1f;
+        else if (Input.GetKey(KeyCode.RightArrow))
+            moveX = -1f;
+
+        if (Input.GetKey(KeyCode.UpArrow))
+            moveZ = -1f;
+        else if (Input.GetKey(KeyCode.DownArrow))
+            moveZ = 1f;
+
+        Vector3 movement = new Vector3(moveX, 0f, moveZ);
+
+        rb.AddForce(-movement*speed);
+    }
+}
